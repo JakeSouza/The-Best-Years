@@ -1,0 +1,129 @@
+Boss:Leonard
+Hey, we’re looking like were going to be short staffed on sunday. Can you work a double for us to help cover some ground?
+money up social down health down
+money down socail up health up
+Boss:Leonard
+Kayla just called out for wednesday night, could you pick up her shift?
+money up social down grades down
+money down social up grades up
+Boss:Leonard
+There’s a training opportunity that comes with a pay raise next week, you interested?
+money up socail down grades down
+money down social up health up
+Kayla
+Kayla needs to switch a shift, one of her cats died or something, miss a party and help her out?
+money up social down
+social up
+Kayla
+So this weekend I am going to upstate New York, can you cat sit for me?
+money up
+social down
+Kayla
+Hey! Wanna grab Coffee Bean before work tomorrow?
+money down social up
+social down
+Brad
+Yo! There is this new quinoa and avocado place downtown, wanna try it?
+social up health up grades down money down
+social down
+Brad
+There’s this underground Yurt party this Thursday, interested?
+social up health down grades down
+social down health up grades up
+Brad
+Brad’s blasting folk music through the thin walls. Ask him to quiet down?
+health up social down
+health down
+Jessica
+This new raw vegan place opened near campus! Care to join?
+social up health up grades down money down
+social down
+Jessica
+This Thursday there is this new yoga club opening up, want to go? Their drinks all have kale in them!
+social up health down grades down
+health up social down grades up
+Jessica
+Jessica is listening to some indie artist and apparently you are too now. Ask her to turn it down?
+health up social down
+health down
+Prof. Cates
+Pop quiz
+grades up
+grades down
+Prof. Cates
+I noticed you didn’t do well on the last quiz. If you work the open house, I’ll give you extra credit.
+grades up social down
+grades down
+Prof. Sanchez
+Get picked on to answer a question 
+grade up
+grade down
+Yourself
+Games in class
+grades down
+grades up
+Yourself
+Pull an all nighter
+grades up health down
+grades down health up
+Yourself 
+You have no one to eat with but your stomach is growling, eat by yourself?
+social down health down
+health down
+Yourself
+Watch fifth hour of Netflix
+health up grades down social down
+grades up
+Mykailah
+Hey! It’s Friday and I’m pregaming! There’s vodka in my water bottle, want some?
+social up grades down
+grades up social down
+Mykailah
+I’m honestly, like, going to totally fail this test. Wanna help me study?
+grades up social up health down 
+grades down social down
+Mykailah
+We don’t do anything in this class, wanna get lunch instead?
+social up health up money down grades down
+grades up social down health down
+Paul
+Bro! I am hammered right now! Want some fireball?
+social up grades down
+social down
+grades up
+Paul
+Dude! You’re like a nerd right? If I fail this test I can’t play soccer, help me please?!
+grades up social up health down
+grades down social down health up
+Paul
+Dude! You’re like a nerd right? If I fail this test I can’t play soccer, help me please?!
+grades up social up health down
+grades down social down health up
+Paul
+Bro! You’re like so chill, we should skip, vape, and get some food.
+social up health up money down grades down
+social down health down money up grades up
+Logan
+Yo! Dude-bro there’s a football game tonight let’s go!
+social up grades down
+social down
+Logan
+Dude-bro baseball house. Tonight! Be there!
+social up health down grade down
+social down grade up
+Logan
+Dude-bro! Coffee this weekend? Just us <3
+social up health up
+social down health down
+Audrey
+Tonight we are watching the football game see you at 7.
+social up grades down
+social down
+Audrey
+My teammate is throwing a party. You’re coming.
+social up health down grades down
+social down grades up
+Audrey
+Me, you, date. Tommorrow.
+social up
+social down 
