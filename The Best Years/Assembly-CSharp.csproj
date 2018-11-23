@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\interactionHandler.cs" />
     <Compile Include="Assets\Scripts\loadQuestions.cs" />
     <Compile Include="Assets\Scripts\playerHealth.cs" />
     <Compile Include="Assets\Scripts\randomPicker.cs" />
