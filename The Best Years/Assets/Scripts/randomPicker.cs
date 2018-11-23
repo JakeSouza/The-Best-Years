@@ -1,4 +1,4 @@
-public class randomPicker {
+/*public class randomPicker {
     public List<int> first = new List<int>();
     public List<int> second = new List<int>();
     Random rnd = new Random();
@@ -36,4 +36,4 @@ public class randomPicker {
         }
         return one, two;
     }
-}
+}*/
