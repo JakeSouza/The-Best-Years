@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{49BC056D-7856-1A7D-8BB3-17EAD4B6B8B1}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/interactionHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/playerHealth.cs">
     <Files>
-      <File FileName="Assets/Scripts/playerHealth.cs" Line="43" Column="10" />
-      <File FileName="Assets/Scripts/interactionHandler.cs" Line="17" Column="10" />
+      <File FileName="Assets/Scripts/playerHealth.cs" Line="35" Column="10" />
+      <File FileName="Assets/Scripts/interactionHandler.cs" Line="86" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

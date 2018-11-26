@@ -9,6 +9,7 @@ public class playerHealth : MonoBehaviour {
     public float healthHealth { get; set; }
     public float moneyHealth { get; set; }
     public float maxHealth { get; set; }
+    public float startHealth { get; set; }
     public Slider gradeBar;
     public Slider socialBar;
     public Slider healthBar;
@@ -17,11 +18,12 @@ public class playerHealth : MonoBehaviour {
     // Use this for initialization
     void Start () {
         maxHealth = 100f;
+        startHealth = 50f;
         //resest health at start of game
-        gradeHealth = maxHealth;
-        socialHealth = maxHealth;
-        healthHealth = maxHealth;
-        moneyHealth = maxHealth;
+        gradeHealth = startHealth;
+        socialHealth = startHealth;
+        healthHealth = startHealth;
+        moneyHealth = startHealth;
         gradeBar.value = calculateGradeHealth();
         socialBar.value = calculateSocialHealth();
         healthBar.value = calculateHealthHealth();
