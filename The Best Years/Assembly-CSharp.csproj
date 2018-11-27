@@ -61,10 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\interactionHandler.cs" />
+    <Compile Include="Assets\Scripts\Loader.cs" />
     <Compile Include="Assets\Scripts\loadQuestions.cs" />
     <Compile Include="Assets\Scripts\playerHealth.cs" />
     <Compile Include="Assets\Scripts\randomPicker.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <None Include="Assets\questions.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/laure/OneDrive/Documents/GitHub/The-Best-Years/The Best Years/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
