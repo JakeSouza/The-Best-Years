@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class interactionHandler: MonoBehaviour {
     // initialize lists to hold interactions
+    //non-used
     private List<int> first = new List<int>();
+    //used
     private List<int> second = new List<int>();
 
     //***FOR TESTING***

@@ -57,7 +57,7 @@ public class playerHealth : MonoBehaviour {
         // if no health, you lose
         if (gradeHealth <= 0)
         {
-            youLose();
+            GameManager.youLoseGrades();
         }
     }
 
@@ -70,7 +70,7 @@ public class playerHealth : MonoBehaviour {
         // if no health, you lose
         if (socialHealth <= 0)
         {
-            youLose();
+            GameManager.youLoseSocial();
         }
     }
 
@@ -83,7 +83,7 @@ public class playerHealth : MonoBehaviour {
         // if no health, you lose
         if (healthHealth <= 0)
         {
-            youLose();
+            GameManager.youLoseHealth();
         }
     }
 
@@ -96,7 +96,7 @@ public class playerHealth : MonoBehaviour {
         // if no health, you lose
         if (moneyHealth <= 0)
         {
-            youLose();
+            GameManager.youLoseMoney();
         }
     }
 
@@ -117,10 +117,5 @@ public class playerHealth : MonoBehaviour {
     float calculateMoneyHealth()
     {
         return moneyHealth / maxHealth;
-    }
-
-    void youLose(){
-
-        Debug.Log("You Lose");
     }
 }
