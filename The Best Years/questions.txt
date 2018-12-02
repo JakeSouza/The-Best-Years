@@ -1,0 +1,270 @@
+Leonard
+Hey, we’re looking like were going to be short staffed on sunday. Can you work a double for us to help cover some ground?
+0
+-10
+-10
+10
+0
+10
+10
+-10
+Leonard
+Kayla just called out for wednesday night, could you pick up her shift?
+-10
+-10
+0
+10
+10
+10
+0
+-10
+Leonard
+There’s a training opportunity that comes with a pay raise next week, you interested?
+-10
+-10
+0
+10
+0
+10
+10
+-10
+Kayla
+Kayla needs to switch a shift, one of her cats died or something, miss a party and help her out?
+0
+-10
+0
+10
+0
+10
+0
+0
+Kayla
+So this weekend I am going to upstate New York, can you cat sit for me?
+0
+0
+0
+10
+0
+-10
+0
+0
+Kayla
+Hey! Wanna grab Coffee Bean before work tomorrow?
+0
+10
+0
+-10
+0
+-10
+0
+0
+Leo
+Yo! There is this new quinoa and avocado place downtown, wanna try it?
+-10
+10
+10
+-10
+0
+-10
+0
+0
+Leo
+There’s this underground Yurt party this Thursday, interested?
+-10
+10
+-10
+0
+10
+-10
+10
+0
+Leo
+Brad’s blasting folk music through the thin walls. Ask him to quiet down?
+0
+-10
+10
+0
+0
+0
+-10
+0
+ProfCates
+TRUE or FALSE: This line of code in Java will print out "Hello world": System.out.println("Hello world")
+-10
+0
+0
+0
+10
+0
+0
+0
+ProfCates
+TRUE or FALSE: Spacewar, an early video game, was developed to test the military strategies of the Pentagon.
+-10
+0
+0
+0
+10
+0
+0
+0
+ProfCates
+I noticed you didn’t do well on the last quiz. If you work the open house, I’ll give you extra credit.
+10
+-10
+0
+0
+-10
+0
+0
+0
+ProfSanchez
+TRUE or FALSE: A hummingbird’s heart rate can reach 1,000 beats per minute. 
+10
+0
+0
+0
+-10
+0
+0
+0
+ProfSanchez
+TRUE or FALSE: The bill of a toucan is a formidable weapon. 
+-10
+0
+0
+0
+10
+0
+0
+0
+Mykailah
+Hey! It’s Friday and I’m pregaming! There’s vodka in my water bottle, want some?
+-10
+10
+0
+0
+10
+-10
+0
+0
+Mykailah
+I’m honestly, like, going to totally fail this test. Wanna help me study?
+10
+10
+-10
+0
+-10
+-10
+0
+0
+Mykailah
+We don’t do anything in this class, wanna get lunch instead?
+-10
+10
+10
+-10
+10
+-10
+-10
+0
+Paul
+Bro! I am hammered right now! Want some fireball?
+-10
+10
+0
+0
+10
+-10
+0
+0
+Paul
+Dude! You’re like a nerd right? If I fail this test I can’t play soccer, help me please?!
+10
+10
+-10
+0
+-10
+-10
+10
+0
+Paul
+Dude! You’re like a nerd right? If I fail this test I can’t play soccer, help me please?!
+10
+10
+-10
+0
+-10
+-10
+10
+0
+Paul
+Bro! You’re like so chill, we should skip, vape, and get some food.
+-10
+10
+10
+-10
+10
+-10
+-10
+10
+Logan
+Yo! Dude-bro there’s a football game tonight let’s go!
+-10
+10
+0
+0
+10
+-10
+0
+0
+Logan
+Dude-bro baseball house. Tonight! Be there!
+-10
+10
+-10
+0
+10
+-10
+0
+0
+Logan
+Dude-bro! Coffee this weekend? Just us <3
+0
+10
+10
+0
+0
+-10
+-10
+0
+Allison
+Tonight we are watching the football game see you at 7.
+-10
+10
+0
+0
+0
+-10
+0
+0
+Allison
+My teammate is throwing a party. You're coming?
+-10
+10
+-10
+0
+10
+-10
+0
+0
+Allison
+Me, you, date. Tomorrow?
+0
+10
+0
+0
+0
+-10
+0
+0
