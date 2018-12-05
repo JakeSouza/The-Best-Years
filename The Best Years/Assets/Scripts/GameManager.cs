@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
     private Text mainText;
+    private Text instructions;
     private float imageDelay = 2f;
     private GameObject main;
     private GameObject Allison;
@@ -23,7 +24,6 @@ public class GameManager : MonoBehaviour
     private GameObject ProfCates;
     private GameObject ProfSanchez;
     private GameObject currentImage;
-    private List<string> characters = new List<string>(new string[] { "Allison", "Kayla", "Leo", "Leonard", "Logan", "Mykailah", "Paul", "ProfCates", "ProfSanchez" });
     [HideInInspector] public bool playersTurn = true;
     private string character;
     private float speed = 19900f;
@@ -49,9 +49,11 @@ public class GameManager : MonoBehaviour
     stackedLists returnHolder = new stackedLists();
 
     private Text scenarioText;
+    private Text daysSurvived;
     private Text dayText;
+    private Text characterName;
     System.Random rnd = new System.Random();
-    private int remaining = 26;
+    private int remaining = 25;
 
     private List<string> used = new List<string>();
     private List<string> active = new List<string>(); //stores questions
@@ -98,6 +100,8 @@ public class GameManager : MonoBehaviour
         win = GameObject.Find("Win");
 
         scenarioText = GameObject.Find("Scenarios").GetComponent<Text>();
+        daysSurvived = GameObject.Find("Days Survived").GetComponent<Text>();
+        characterName = GameObject.Find("Character").GetComponent<Text>();
         dayText = GameObject.Find("Days").GetComponent<Text>();
         days = 0;
 
@@ -116,6 +120,7 @@ public class GameManager : MonoBehaviour
         hideAllnpc();
         hideBars();
         hideAllOutcomes();
+        hideText(daysSurvived);
         //hideText(scenarioText);
 
         var fileStream = new FileStream(@"C:\Users\laure\OneDrive\Documents\GitHub\The-Best-Years\The Best Years\questions.txt", FileMode.Open, FileAccess.Read);
@@ -198,6 +203,7 @@ public class GameManager : MonoBehaviour
     void InitGame()
     {
         mainText = GameObject.Find("Text").GetComponent<Text>();
+        instructions = GameObject.Find("Instructions").GetComponent<Text>();
         main = GameObject.Find("Main");
 
         mainText.color = new Color(mainText.color.r, mainText.color.g, mainText.color.b, Mathf.Sin(Time.time * 3));
@@ -207,6 +213,7 @@ public class GameManager : MonoBehaviour
             //hideAllnpc();
             hideImage(main);
             hideText(mainText);
+            hideText(instructions);
             stackedLists temp = new stackedLists();
             temp = getCharacter();
             character = temp.name;
@@ -224,6 +231,7 @@ public class GameManager : MonoBehaviour
             print(Allison);
             showImage(Allison);
             currentImage = Allison;
+            characterName.text = "Allison";
             setDays();
             youWin();
         }
@@ -232,6 +240,7 @@ public class GameManager : MonoBehaviour
             print("Kayla");
             showImage(Kayla);
             currentImage = Kayla;
+            characterName.text = "Kayla";
             setDays();
             youWin();
         }
@@ -240,6 +249,7 @@ public class GameManager : MonoBehaviour
             print("Leo");
             showImage(Leo);
             currentImage = Leo;
+            characterName.text = "Leo";
             setDays();
             youWin();
         }
@@ -248,6 +258,7 @@ public class GameManager : MonoBehaviour
             print("Leonard");
             showImage(Leonard);
             currentImage = Leonard;
+            characterName.text = "Leonard";
             setDays();
             youWin();
         }
@@ -256,6 +267,7 @@ public class GameManager : MonoBehaviour
             print("Logan");
             showImage(Logan);
             currentImage = Logan;
+            characterName.text = "Logan";
             setDays();
             youWin();
         }
@@ -264,6 +276,7 @@ public class GameManager : MonoBehaviour
             print("Mykailah");
             showImage(Mykailah);
             currentImage = Mykailah;
+            characterName.text = "Mykailah";
             setDays();
             youWin();
         }
@@ -272,6 +285,7 @@ public class GameManager : MonoBehaviour
             print("Paul");
             showImage(Paul);
             currentImage = Paul;
+            characterName.text = "Paul";
             setDays();
             youWin();
         }
@@ -280,6 +294,7 @@ public class GameManager : MonoBehaviour
             print("ProfCates");
             showImage(ProfCates);
             currentImage = ProfCates;
+            characterName.text = "Professor Cates";
             setDays();
             youWin();
         }
@@ -288,6 +303,7 @@ public class GameManager : MonoBehaviour
             print("ProfSanchez");
             showImage(ProfSanchez);
             currentImage = ProfSanchez;
+            characterName.text = "Professor Sanchez";
             setDays();
             youWin();
         }
@@ -342,7 +358,7 @@ public class GameManager : MonoBehaviour
 
     void Interaction()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             //currentImage.transform.Translate(-Vector3.right * speed * Time.deltaTime);
             gradeDamage(returnHolder.no[0]);
@@ -359,7 +375,7 @@ public class GameManager : MonoBehaviour
             loadnpc(character);
         }
 
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.Y))
         {
             //currentImage.transform.Translate(Vector3.right * speed * Time.deltaTime); 
             gradeDamage(returnHolder.yes[0]);
@@ -377,29 +393,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void youLoseGrades()
+    public void youLoseGrades()
     {
         loseGrades.SetActive(true);
         hideBars();
+        daysSurvived.text = "You made it to " + days + " days.";
+        showText(daysSurvived);
 
     }
 
-    public static void youLoseSocial()
+    public void youLoseSocial()
     {
         loseSocial.SetActive(true);
         hideBars();
+        daysSurvived.text = "You made it to " + days + " days.";
+        showText(daysSurvived);
     }
 
-    public static void youLoseHealth()
+    public void youLoseHealth()
     {
         loseHealth.SetActive(true);
         hideBars();
+        daysSurvived.text = "You made it to " + days + " days.";
+        showText(daysSurvived);
     }
 
-    public static void youLoseMoney()
+    public void youLoseMoney()
     {
         loseMoney.SetActive(true);
         hideBars();
+        daysSurvived.text = "You made it to " + days + " days.";
+        showText(daysSurvived);
     }
 
     void youWin()
@@ -408,6 +432,8 @@ public class GameManager : MonoBehaviour
         {
             win.SetActive(true);
             hideBars();
+            daysSurvived.text = "Congratulations you graduated!";
+            showText(daysSurvived);
         }
 
     }
@@ -525,7 +551,7 @@ public class GameManager : MonoBehaviour
         // if no health, you lose
         if (gradeHealth <= 0)
         {
-            GameManager.youLoseGrades();
+            youLoseGrades();
         }
     }
 
@@ -537,7 +563,7 @@ public class GameManager : MonoBehaviour
         // if no health, you lose
         if (socialHealth <= 0)
         {
-            GameManager.youLoseSocial();
+           youLoseSocial();
         }
     }
 
@@ -550,7 +576,7 @@ public class GameManager : MonoBehaviour
         // if no health, you lose
         if (healthHealth <= 0)
         {
-            GameManager.youLoseHealth();
+            youLoseHealth();
         }
     }
 
@@ -563,7 +589,7 @@ public class GameManager : MonoBehaviour
         // if no health, you lose
         if (moneyHealth <= 0)
         {
-            GameManager.youLoseMoney();
+            youLoseMoney();
         }
     }
 
