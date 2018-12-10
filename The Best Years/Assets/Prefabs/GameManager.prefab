@@ -51,13 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffa2957d702ce1429540a7e682e2054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc:
-  - {fileID: 114331582603454202, guid: 22cbe6353b6196a4b82c4657f98c22e1, type: 2}
-  - {fileID: 114475592612604360, guid: 9ef582ea2bf056646926ec552b8b74fd, type: 2}
-  - {fileID: 114984413990494990, guid: be42f369fc5081e49b86051171999688, type: 2}
-  - {fileID: 114874588541857480, guid: 5b292d14df3bd2d499444d6e665d0b0e, type: 2}
-  - {fileID: 114906718860408588, guid: 5515a28e386a5e643bc7a335eecca445, type: 2}
-  - {fileID: 114157201143912544, guid: 3ebb5c265aa013244a1958a96e811e6d, type: 2}
-  - {fileID: 114078487076969582, guid: a3fd19425d637da45b0d616207dcbff6, type: 2}
-  - {fileID: 114117408163690036, guid: c4fc199cc0f998140b52a8247f3d735e, type: 2}
-  - {fileID: 114622858552205510, guid: 29dd1d0ddc7a52847a402a67aa2e5cf8, type: 2}
+  playersTurn: 1
+  interactionSound: {fileID: 8300000, guid: 2c1d03190839f9248bb9335c02c18355, type: 3}
+  loseSound: {fileID: 8300000, guid: 225d200dd11aeb446b2a5445a801534a, type: 3}
+  winSound: {fileID: 8300000, guid: 864de6f8c5140c6498d45d948303ab08, type: 3}

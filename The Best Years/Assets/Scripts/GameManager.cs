@@ -24,15 +24,21 @@ public class GameManager : MonoBehaviour
     private GameObject ProfCates;
     private GameObject ProfSanchez;
     private GameObject currentImage;
+
     [HideInInspector] public bool playersTurn = true;
+
     private string character;
-    private float speed = 19900f;
     private int days;
+    private int remaining = 54;
 
     public static Slider gradeBar;
     public static Slider socialBar;
     public static Slider healthBar;
     public static Slider moneyBar;
+
+    public AudioClip interactionSound;
+    public AudioClip loseSound;
+    public AudioClip winSound;
 
     public static float gradeHealth { get; set; }
     public static float socialHealth { get; set; }
@@ -46,14 +52,15 @@ public class GameManager : MonoBehaviour
     public static GameObject loseHealth;
     public static GameObject loseMoney;
     public static GameObject win;
+
     stackedLists returnHolder = new stackedLists();
 
     private Text scenarioText;
     private Text daysSurvived;
     private Text dayText;
     private Text characterName;
+
     System.Random rnd = new System.Random();
-    private int remaining = 25;
 
     private List<string> used = new List<string>();
     private List<string> active = new List<string>(); //stores questions
@@ -103,10 +110,11 @@ public class GameManager : MonoBehaviour
         daysSurvived = GameObject.Find("Days Survived").GetComponent<Text>();
         characterName = GameObject.Find("Character").GetComponent<Text>();
         dayText = GameObject.Find("Days").GetComponent<Text>();
-        days = 0;
 
+        days = 0;
         maxHealth = 100f;
         startHealth = 50f;
+        
         //resest health at start of game
         gradeHealth = startHealth;
         socialHealth = startHealth;
@@ -361,6 +369,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
             //currentImage.transform.Translate(-Vector3.right * speed * Time.deltaTime);
+            SoundManager.instance.PlaySingle(interactionSound);
             gradeDamage(returnHolder.no[0]);
             socialDamage(returnHolder.no[1]);
             healthDamage(returnHolder.no[2]);
@@ -378,6 +387,7 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Y))
         {
             //currentImage.transform.Translate(Vector3.right * speed * Time.deltaTime); 
+            SoundManager.instance.PlaySingle(interactionSound);
             gradeDamage(returnHolder.yes[0]);
             socialDamage(returnHolder.yes[1]);
             healthDamage(returnHolder.yes[2]);
@@ -399,6 +409,8 @@ public class GameManager : MonoBehaviour
         hideBars();
         daysSurvived.text = "You made it to " + days + " days.";
         showText(daysSurvived);
+        SoundManager.instance.musicSource.Stop();
+        SoundManager.instance.PlaySingle(loseSound);
 
     }
 
@@ -408,6 +420,8 @@ public class GameManager : MonoBehaviour
         hideBars();
         daysSurvived.text = "You made it to " + days + " days.";
         showText(daysSurvived);
+        SoundManager.instance.musicSource.Stop();
+        SoundManager.instance.PlaySingle(loseSound);
     }
 
     public void youLoseHealth()
@@ -416,6 +430,8 @@ public class GameManager : MonoBehaviour
         hideBars();
         daysSurvived.text = "You made it to " + days + " days.";
         showText(daysSurvived);
+        SoundManager.instance.musicSource.Stop();
+        SoundManager.instance.PlaySingle(loseSound);
     }
 
     public void youLoseMoney()
@@ -424,6 +440,8 @@ public class GameManager : MonoBehaviour
         hideBars();
         daysSurvived.text = "You made it to " + days + " days.";
         showText(daysSurvived);
+        SoundManager.instance.musicSource.Stop();
+        SoundManager.instance.PlaySingle(loseSound);
     }
 
     void youWin()
@@ -434,6 +452,8 @@ public class GameManager : MonoBehaviour
             hideBars();
             daysSurvived.text = "Congratulations you graduated!";
             showText(daysSurvived);
+            SoundManager.instance.musicSource.Stop();
+            SoundManager.instance.PlaySingle(winSound);
         }
 
     }
