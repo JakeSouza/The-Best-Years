@@ -6,13 +6,22 @@ using System.IO;
 using System;
 using System.Text;
 
+/*
+ * Created by: Lauren Ramirez, Isaac Martin, Jake Souza, Victoria Cigarroa
+ * COMSC 450 Game Design
+ * Final Project: The Best Years
+ */
+
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
+
+    //Store Text
     private Text mainText;
     private Text instructions;
-    private float imageDelay = 2f;
+
+    //Store Images
     private GameObject main;
     private GameObject Allison;
     private GameObject Kayla;
@@ -60,11 +69,16 @@ public class GameManager : MonoBehaviour
     private Text dayText;
     private Text characterName;
 
+    //File Path
+    private string path;
+
     System.Random rnd = new System.Random();
 
     private List<string> used = new List<string>();
-    private List<string> active = new List<string>(); //stores questions
-    private string line;    //used for reading in questions
+    //Stores Questions
+    private List<string> active = new List<string>();
+    //Used for reading in questions
+    private string line; 
     //private playerHealth social;
 
     // Use this for initialization
@@ -85,6 +99,7 @@ public class GameManager : MonoBehaviour
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
 
+        //Find NPC Player Images
         Allison = GameObject.Find("Allison");
         Kayla = GameObject.Find("Kayla");
         Leo = GameObject.Find("Leo");
@@ -95,22 +110,26 @@ public class GameManager : MonoBehaviour
         ProfCates = GameObject.Find("ProfCates");
         ProfSanchez = GameObject.Find("ProfSanchez");
 
+        //Find Slider Bars
         gradeBar = GameObject.Find("gradeBar").GetComponent<Slider>();
         socialBar = GameObject.Find("socialBar").GetComponent<Slider>();
         healthBar = GameObject.Find("healthBar").GetComponent<Slider>();
         moneyBar = GameObject.Find("moneyBar").GetComponent<Slider>();
 
+        //Find Losing Scenario Images
         loseGrades = GameObject.Find("LoseGrades");
         loseHealth = GameObject.Find("LoseHealth");
         loseSocial = GameObject.Find("LoseSocial");
         loseMoney = GameObject.Find("LoseMoney");
         win = GameObject.Find("Win");
 
+        //Find Text for gameplay
         scenarioText = GameObject.Find("Scenarios").GetComponent<Text>();
         daysSurvived = GameObject.Find("Days Survived").GetComponent<Text>();
         characterName = GameObject.Find("Character").GetComponent<Text>();
         dayText = GameObject.Find("Days").GetComponent<Text>();
 
+        //Set Number of days, maximum health and start health
         days = 0;
         maxHealth = 100f;
         startHealth = 50f;
@@ -125,13 +144,15 @@ public class GameManager : MonoBehaviour
         healthBar.value = calculateHealthHealth();
         moneyBar.value = calculateMoneyHealth();
 
+        //Hide Images
         hideAllnpc();
         hideBars();
         hideAllOutcomes();
         hideText(daysSurvived);
-        //hideText(scenarioText);
 
-        var fileStream = new FileStream(@"C:\Users\laure\OneDrive\Documents\GitHub\The-Best-Years\The Best Years\questions.txt", FileMode.Open, FileAccess.Read);
+        //Read Questions from text file
+        path = Application.dataPath + "/StreamingAssets"; //Streaming Assets is used so that the file could be used in built version of game
+        var fileStream = new FileStream(path+"/questions.txt", FileMode.Open, FileAccess.Read);
         using (var streamReader = new StreamReader(fileStream))
         {
             while ((line = streamReader.ReadLine()) != null)
@@ -144,32 +165,47 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Call Functions
         InitGame();
         Interaction();
     }
 
+    /*
+     * Hides images from main screen 
+     */
     void hideImage(GameObject image)
     {
         image.SetActive(false);
     }
 
+    /*
+     * Hides Text from main screen 
+     */
     void hideText(Text text)
     {
         text.enabled = false;
     }
 
+    /*
+     * Shows text from main screen 
+     */
     void showText(Text text)
     {
         text.enabled = true;
     }
 
+    /*
+     * Shows images from main screen 
+     */
     void showImage(GameObject image)
     {
         image.SetActive(true);
         //print("Image");
     }
 
+    /*
+     * Hides all the NPC images from main screen 
+     */
     void hideAllnpc()
     {
         Allison.SetActive(false);
@@ -183,6 +219,9 @@ public class GameManager : MonoBehaviour
         ProfSanchez.SetActive(false);
     }
 
+    /*
+     * Hides all the losing/winning images from main screen 
+     */
     void hideAllOutcomes()
     {
         loseGrades.SetActive(false);
@@ -192,6 +231,9 @@ public class GameManager : MonoBehaviour
         win.SetActive(false);
     }
 
+    /*
+     * Hides all health bars from main screen 
+     */
     static void hideBars()
     {
         gradeBar.enabled = false;
@@ -200,6 +242,9 @@ public class GameManager : MonoBehaviour
         moneyBar.enabled = false;
     }
 
+    /*
+     * Shows all health bars from main screen 
+     */
     void showBars()
     {
         gradeBar.enabled = true;
@@ -208,30 +253,46 @@ public class GameManager : MonoBehaviour
         moneyBar.enabled = true;
     }
 
+    /*
+     * Method Initializes the Game. Waits for user to press space bar
+     * to initialize the game.
+     */
     void InitGame()
     {
+        //Find main text, instructions and main image in Unity
         mainText = GameObject.Find("Text").GetComponent<Text>();
         instructions = GameObject.Find("Instructions").GetComponent<Text>();
         main = GameObject.Find("Main");
 
+        //Make Instruction text fade in and out
         mainText.color = new Color(mainText.color.r, mainText.color.g, mainText.color.b, Mathf.Sin(Time.time * 3));
 
+        //Compute when user presses space bar. Initializes game
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //hideAllnpc();
+            //Hide Main image, and displayed texts
             hideImage(main);
             hideText(mainText);
             hideText(instructions);
+            //Create a temporary stacked list to store questions from text file
             stackedLists temp = new stackedLists();
+            //Add required features to the list
             temp = getCharacter();
             character = temp.name;
             scenarioText.text = temp.interaction;
             active = temp.Prop1;
             used = temp.Prop2;
+            //Load NPC images and show bars
             loadnpc(character);
             showBars();
         }
     }
+
+    /*
+     * Method takes in a character name and shows the image for that character.
+     * Checks if the player won every time a new image is loaded
+     * Keeps teck of the current image on screen
+     */
     void loadnpc(string character)
     {
         if (character == "Allison")
@@ -317,46 +378,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void hidenpc(string character)
-    {
-        if (character == "Allison")
-        {
-            hideImage(Allison);
-        }
-        else if (character == "Kayla")
-        {
-            hideImage(Kayla);
-        }
-        else if (character == "Leo")
-        {
-            hideImage(Leo);
-        }
-        else if (character == "Leonard")
-        {
-            hideImage(Leonard);
-        }
-        else if (character == "Logan")
-        {
-            hideImage(Logan);
-        }
-        else if (character == "Mykailah")
-        {
-            hideImage(Mykailah);
-        }
-        else if (character == "Paul")
-        {
-            hideImage(Paul);
-        }
-        else if (character == "ProfCates")
-        {
-            hideImage(ProfCates);
-        }
-        else if (character == "ProfScanchez")
-        {
-            hideImage(ProfSanchez);
-        }
-    }
-
+    /*
+     * Picks a random character
+     */
     stackedLists getCharacter()
     {
 
@@ -364,45 +388,63 @@ public class GameManager : MonoBehaviour
         return returnHolder;
     }
 
+    /*
+     * Method deals with user input. Whenever a player accepts or declines a scenario
+     */
     void Interaction()
     {
+        //Decline Scenario
         if (Input.GetKeyDown(KeyCode.N))
         {
-            //currentImage.transform.Translate(-Vector3.right * speed * Time.deltaTime);
+            //Play Sound 
             SoundManager.instance.PlaySingle(interactionSound);
+            //Damage for health bars
             gradeDamage(returnHolder.no[0]);
             socialDamage(returnHolder.no[1]);
             healthDamage(returnHolder.no[2]);
             moneyDamage(returnHolder.no[3]);
+            //Update the stacked List
             stackedLists temp = new stackedLists();
             temp = getCharacter();
             scenarioText.text = temp.interaction;
             character = temp.name;
             active = temp.Prop1;
             used = temp.Prop2;
+            //Hide Current Character Image
             hideImage(currentImage);
+            //Show New Character Image
             loadnpc(character);
         }
 
+        //Accept Scenario
         else if (Input.GetKeyDown(KeyCode.Y))
         {
-            //currentImage.transform.Translate(Vector3.right * speed * Time.deltaTime); 
+            //Play Sound
             SoundManager.instance.PlaySingle(interactionSound);
+            //Dame for health bars
             gradeDamage(returnHolder.yes[0]);
             socialDamage(returnHolder.yes[1]);
             healthDamage(returnHolder.yes[2]);
             moneyDamage(returnHolder.yes[3]);
+            //Update the stacked list
             stackedLists temp = new stackedLists();
             temp = getCharacter();
             scenarioText.text = temp.interaction;
             character = temp.name;
             active = temp.Prop1;
             used = temp.Prop2;
+            //Hide current character image
             hideImage(currentImage);
+            //Load new character image
             loadnpc(character);
         }
     }
 
+    /*
+     * Method Displays you lose screen when grades reach 0
+     * Displays the number of days survived.
+     * Stop main sound and play losing sound
+     */
     public void youLoseGrades()
     {
         loseGrades.SetActive(true);
@@ -414,6 +456,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /*
+     * Method Displays you lose screen when social reach 0
+     * Displays the number of days survived.
+     * Stop main sound and play losing sound
+     */
     public void youLoseSocial()
     {
         loseSocial.SetActive(true);
@@ -424,6 +471,11 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySingle(loseSound);
     }
 
+    /*
+     * Method Displays you lose screen when health reach 0
+     * Displays the number of days survived.
+     * Stop main sound and play losing sound
+     */
     public void youLoseHealth()
     {
         loseHealth.SetActive(true);
@@ -434,6 +486,11 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySingle(loseSound);
     }
 
+    /*
+     * Method Displays you lose screen when money reach 0
+     * Displays the number of days survived.
+     * Stop main sound and play losing sound
+     */
     public void youLoseMoney()
     {
         loseMoney.SetActive(true);
@@ -444,6 +501,10 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySingle(loseSound);
     }
 
+    /*
+     * Method Displays you win screen when player reaches 50 days
+     * Stop main sound and play winning sound
+     */
     void youWin()
     {
         if (days == 50)
@@ -458,12 +519,20 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /*
+     * Update the Number of Days
+     */
     void setDays()
     {
         days++;
         dayText.text = "Day " + days;
     }
 
+    /*
+     * Picks a Random Character
+     * Method deals with the repetition of questions. It stores used questions in one array
+     * and the rest in another array. All these questions are read from a text file.
+     */
     public stackedLists pickRandomly(List<string> one, List<string> two)
     {
         // initialize variables to be used in method
@@ -504,6 +573,7 @@ public class GameManager : MonoBehaviour
 
             return new stackedLists { Prop1 = one, Prop2 = two, name = name, interaction = interaction, yes = yes, no = no };
         }
+
         //if only one interaction left
         else
         {
@@ -562,6 +632,9 @@ public class GameManager : MonoBehaviour
         return new stackedLists { Prop1 = one, Prop2 = two };
     }
 
+    /*
+     * Method Damages grade health bar when user accepts or declines a scenario
+     */
     public void gradeDamage(string damageValue)
     {
         // deduct damage
@@ -575,6 +648,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+     * Method Damages social health bar when user accepts or declines a scenario
+     */
     public void socialDamage(string damageValue)
     {
         // deduct damage
@@ -587,6 +663,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+     * Method Damages health health bar when user accepts or declines a scenario
+     */
     public void healthDamage(string damageValue)
     {
         // deduct damage
@@ -600,6 +679,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+     * Method Damages money health bar when user accepts or declines a scenario
+     */
     public void moneyDamage(string damageValue)
     {
         // deduct damage
@@ -613,6 +695,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+     * Returns the current health bar value
+     */
     float calculateGradeHealth()
     {
         return gradeHealth / maxHealth;
@@ -634,15 +719,19 @@ public class GameManager : MonoBehaviour
     }
 }
 
+/*
+ * StackedList class
+ */
 public class stackedLists
 {
     public List<string> Prop1 { get; set; }
     public List<string> Prop2 { get; set; }
 
-    public string name;
-    public string interaction;
-    public List<string> yes { get; set; }
-    public List<string> no { get; set; }
+    //StackedList features
+    public string name; //Name of the character
+    public string interaction; //Scenario
+    public List<string> yes { get; set; } // HealthBar decrease/increase if sceanrio is accepted
+    public List<string> no { get; set; } // HealthBar decrease/increase if scenario is declined
 }
 
 

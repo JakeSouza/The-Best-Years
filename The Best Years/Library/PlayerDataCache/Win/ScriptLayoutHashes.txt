@@ -1,10 +1,10 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/laure/OneDrive/Desktop/game/The Best Years.exe
+D:/game/The Best Years.exe
 SceneListBegin?
 Assets/Scenes/game scene.unity
 SceneListEnd?
-ca4c1eec4d64d6d9af91517bf6dbf4b7 Assembly-CSharp.dll:.SoundManager
+03c74ef7eb0d6dd5b3c81d01b6c6f00a Assembly-CSharp.dll:.SoundManager
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 486cd95c82d8305219c352c06b776e1f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset

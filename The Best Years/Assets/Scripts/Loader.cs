@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Created by: Lauren Ramirez, Isaac Martin, Jake Souza, Victoria Cigarroa
+ * COMSC 450 Game Design
+ * Final Project: The Best Years
+ */
+
 public class Loader : MonoBehaviour
 {
 
